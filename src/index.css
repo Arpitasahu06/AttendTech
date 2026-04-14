@@ -1,0 +1,38 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* LIGHT THEME */
+:root {
+  --bg: #f5f6fa;
+  --text: #1f2937;
+  --border: #e5e7eb;
+
+  /* SIDEBAR (LIGHT - image jaisa dark hi rakhenge) */
+  --sidebar-bg: #041a2c;        /* exact dark purple */
+  --sidebar-text: rgb(219, 207, 207);
+  --sidebar-hover: rgba(255,255,255,0.12);
+  --sidebar-active: #22c55e;    /* green highlight */
+}
+
+/* DARK MODE (slightly deeper) */
+.dark {
+  --bg: #0f172a;
+  --text: #f9fafb;
+  --border: #2d2d2d;
+
+  --sidebar-bg: #1a1740;        /* thoda darker */
+  --sidebar-text: rgba(255,255,255,0.7);
+  --sidebar-hover: rgba(255,255,255,0.15);
+  --sidebar-active: #16a34a;
+}
+
+/* BODY */
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
