@@ -12,10 +12,10 @@ const Profile = () => {
 
       <div className='profile'>
         <div>
-          <h2>Hello John Doe 👋</h2>
-          <h3>Associate Professor · Computer Science & Engineering</h3>
-          <br />
-          <span>Here is your teaching overview</span>
+          <h1>Hello John Doe 👋</h1>
+          <h2>Associate Professor · Computer Science & Engineering</h2>
+         
+          <p>Here is your teaching overview</p>
         </div>
 
         <div className='pic'>
@@ -47,8 +47,8 @@ const Profile = () => {
         </div>
 
         <div className='block'>
-          <h4>Employee ID</h4>
-          <p>EMP1023</p>
+          <h4>Joining Date</h4>
+          <p>22-09-2022</p>
         </div>
 
         <div className='block'>

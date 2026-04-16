@@ -194,117 +194,111 @@
 //     </div>
 //   );
 // }
+
+
 import { useState } from 'react';
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  PieChart, Pie, Cell,
+BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
+PieChart, Pie, Cell,
 } from 'recharts';
 import { CLASSES, STUDENTS_BY_CLASS, WEEKLY_REPORT } from '../../data';
 import './Report.css';
 
 export default function Reports() {
-  const [selClass, setSelClass] = useState('cse3a');
+const [selClass, setSelClass] = useState('cse3a');
 
-  const className = CLASSES.find(c => c.id === selClass)?.label || '';
-  const students  = STUDENTS_BY_CLASS[selClass] || [];
+const className = CLASSES.find(c => c.id === selClass)?.label || '';
+const students = STUDENTS_BY_CLASS[selClass] || [];
 
-  function handleClassChange(e) {
-    setSelClass(e.target.value);
-  }
+function handleClassChange(e) {
+setSelClass(e.target.value);
+}
 
-  const pieData = [
-    { name: 'Above 75%', value: students.filter(s => (s.attended / s.totalClasses * 100) >= 75).length },
-    { name: 'Below 75%', value: students.filter(s => (s.attended / s.totalClasses * 100) < 75).length }
-  ];
+// Pie Data
+const pieData = [
+{
+name: 'Above 75%',
+value: students.filter(s => (s.attended / s.totalClasses * 100) >= 75).length
+},
+{
+name: 'Below 75%',
+value: students.filter(s => (s.attended / s.totalClasses * 100) < 75).length
+}
+];
 
-  const StudentTable = () => (
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Roll</th>
-          <th>Total</th>
-          <th>Attended</th>
-          <th>%</th>
-        </tr>
-      </thead>
-      <tbody>
-        {students.map(s => {
-          const p = Math.round(s.attended / s.totalClasses * 100);
-          return (
-            <tr key={s.id}>
-              <td>{s.name}</td>
-              <td>{s.roll}</td>
-              <td>{s.totalClasses}</td>
-              <td>{s.attended}</td>
-              <td>{p}%</td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  );
+// Table
+const StudentTable = () => ( <table> <thead> <tr> <th>Name</th> <th>Roll</th> <th>Total</th> <th>Attended</th> <th>%</th> </tr> </thead> <tbody>
+{students.map(s => {
+const p = Math.round((s.attended / s.totalClasses) * 100);
+return ( <tr key={s.id}> <td>{s.name}</td> <td>{s.roll}</td> <td>{s.totalClasses}</td> <td>{s.attended}</td> <td>{p}%</td> </tr>
+);
+})} </tbody> </table>
+);
 
-  return (
-    <div className="reports-page">
+return ( <div className="reports-page">
 
-      {/* HEADER */}
-      <div className="page-header">
-        <div>
-          <h2>Reports</h2>
-          <p>{className}</p>
-        </div>
-
-        <select value={selClass} onChange={handleClassChange}>
-          {CLASSES.map(c => (
-            <option key={c.id} value={c.id}>{c.label}</option>
-          ))}
-        </select>
-      </div>
-
-      {/* CHARTS */}
-      <div className="charts-row">
-
-        <div className="card">
-          <h4>Weekly</h4>
-          <div className="chart-area">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={WEEKLY_REPORT}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="week" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="present" fill="#1D9E75" />
-                <Bar dataKey="absent" fill="#E24B4A" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        <div className="card">
-          <h4>Distribution</h4>
-          <div className="chart-area">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie data={pieData} dataKey="value">
-                  <Cell fill="#1D9E75" />
-                  <Cell fill="#E24B4A" />
-                </Pie>
-              </PieChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-      </div>
-
-      {/* TABLE BELOW */}
-      <div className="table-section">
-        <div className="table-wrap">
-          <StudentTable />
-        </div>
-      </div>
-
+  {/* HEADER */}
+  <div className="page-header">
+    <div>
+      <h2>Reports</h2>
+      <p>{className}</p>
     </div>
-  );
+
+    <select value={selClass} onChange={handleClassChange}>
+      {CLASSES.map(c => (
+        <option key={c.id} value={c.id}>{c.label}</option>
+      ))}
+    </select>
+  </div>
+
+  {/* CHARTS */}
+  <div className="charts-row">
+
+    {/* BAR CHART */}
+    <div className="card">
+      <h4>Weekly</h4>
+      <div className="chart-area">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={WEEKLY_REPORT}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+            <XAxis dataKey="week" stroke="#ccc" />
+            <YAxis stroke="#ccc" />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="present" fill="#820e0ed3" />   {/* green */}
+            <Bar dataKey="absent" fill="#215604be" />    {/* red */}
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+
+    {/* PIE CHART */}
+    <div className="card">
+      <h4>Distribution</h4>
+      <div className="chart-area">
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie data={pieData} dataKey="value" outerRadius={80}>
+              <Cell fill="#820e0ed3" />   {/* above 75% */}
+              <Cell fill="#215604be" />   {/* below 75% */}
+            </Pie>
+            <Tooltip />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+
+  </div>
+
+  {/* TABLE */}
+  <div className="table-section">
+    <div className="table-wrap">
+      <StudentTable />
+    </div>
+  </div>
+
+</div>
+
+
+);
 }

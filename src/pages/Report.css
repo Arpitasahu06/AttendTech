@@ -1,60 +1,140 @@
+/* ════════════════════════════════════════
+   Reports.css  —  SmartAttend
+   All colors via CSS variables
+   Dark mode → .dark on parent (index.css)
+   ════════════════════════════════════════ */
+
 .reports-page {
-  padding: 20px;
+  padding: 24px 32px;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  overflow-y: auto;
 }
 
-/* HEADER */
+/* ── PAGE HEADER ── */
 .page-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 0.5px solid var(--border);
+  border-left: 4px solid var(--brand);
+  padding: 18px 22px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
 }
 
-/* CHARTS */
+.page-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.page-header p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 3px;
+}
+
+/* ── CHARTS ROW ── */
 .charts-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 22px;
 }
 
-.card {
-  background: white;
-  border-radius: 10px;
-  padding: 10px;
+/* chart card wrapper */
+.chart-card {
+  background: var(--bg-surface);
+  border: 0.5px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
 }
 
+.chart-card h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+
+/* chart canvas — height is fixed, DO NOT remove */
 .chart-area {
-  height: 250px;
+  width: 100%;
+  height: 300px; /* MUST — recharts/chartjs needs explicit height */
 }
 
-/* TABLE */
+/* ── TABLE SECTION ── */
 .table-section {
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
+.table-section h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── TABLE WRAP ── */
 .table-wrap {
-  max-height: 300px;
+  max-height: 320px;
   overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  border: 0.5px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow);
 }
 
-table {
+/* scrollbar inside table-wrap */
+.table-wrap::-webkit-scrollbar       { width: 5px; }
+.table-wrap::-webkit-scrollbar-track { background: transparent; }
+.table-wrap::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 99px;
+}
+
+/* ── REPORTS TABLE ── */
+.reports-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th, td {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+.reports-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 11px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-subtle);
+  border-bottom: 0.5px solid var(--border);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* SIDEBAR FIX (add in Sidebar.css) */
-.sidebar {
-  position: fixed;
-  height: 100vh;
+.reports-table td {
+  padding: 11px 16px;
+  font-size: 13px;
+  color: var(--text);
+  border-bottom: 0.5px solid var(--border);
 }
 
-/* MAIN SHIFT */
-.main {
-  margin-left: 230px;
+.reports-table tr:last-child td {
+  border-bottom: none;
+}
+
+.reports-table tbody tr:hover {
+  background: var(--bg-hover);
 }

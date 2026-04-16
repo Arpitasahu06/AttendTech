@@ -96,7 +96,7 @@ const Dashboard = () => {
         </select>
 
         <select value={selectedrout} onChange={(e) => setselectedrout(e.target.value)}>
-          <option value="">Choose Route</option>
+          <option value="">Choose Class</option>
           {rout.map(item => (
             <option key={item}>{item}</option>
           ))}

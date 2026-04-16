@@ -1,19 +1,52 @@
+/* ── Myschedule ── */
+/* Variables index.css se aa rahe hain (:root aur .dark) */
+
 .schedule-page {
   padding: 28px 32px;
-  max-width: 800px;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
 }
 
+/* HEADER */
 .schedule-page h2 {
   font-size: 18px;
-  font-weight: 500;
-  color: #111827;
+  font-weight: 600;
   margin-bottom: 16px;
+  color: var(--text);
 }
 
+/* STATS */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.stat-box h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.stat-box p {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* TODAY CARD */
 .today-card {
-  background: #ffffff;
-  border: 0.5px solid #e5e7eb;
-  border-left: 3px solid #4f46e5;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid #059669;
   border-radius: 12px;
   padding: 14px 18px;
   margin-bottom: 10px;
@@ -21,70 +54,58 @@
 
 .today-card h3 {
   font-size: 15px;
-  font-weight: 500;
-  color: #111827;
+  font-weight: 600;
+  color: var(--text);
 }
 
 .today-card p {
   font-size: 13px;
-  color: #6b7280;
-  margin-top: 4px;
+  color: var(--text-secondary);
 }
 
+/* EMPTY */
 .no-class-box {
-  background: #f9fafb;
+  background: var(--bg-hover);
+  padding: 20px;
   border-radius: 12px;
-  padding: 28px;
   text-align: center;
-  font-size: 15px;
-  color: #6b7280;
   margin-bottom: 20px;
+  color: var(--text);
 }
 
-.schedule-page select {
+/* SELECT */
+select {
   margin: 16px 0;
   padding: 8px 14px;
   border-radius: 8px;
-  border: 0.5px solid #e5e7eb;
-  background: #ffffff;
-  color: #111827;
-  font-size: 14px;
-  outline: none;
-  cursor: pointer;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-subtle);
+  color: var(--text);
 }
 
+/* TABLE */
 .schedule-table {
   width: 100%;
   border-collapse: collapse;
-  background: #ffffff;
+  border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
-  border: 0.5px solid #e5e7eb;
 }
 
 .schedule-table th {
-  padding: 12px 16px;
-  text-align: left;
+  background: var(--bg-subtle);
+  padding: 12px;
   font-size: 12px;
-  font-weight: 500;
-  color: #6b7280;
-  background: #f9fafb;
-  border-bottom: 0.5px solid #e5e7eb;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  text-align: left;
+  color: var(--text-secondary);
 }
 
 .schedule-table td {
-  padding: 12px 16px;
-  font-size: 14px;
-  color: #111827;
-  border-bottom: 0.5px solid #e5e7eb;
+  padding: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--text);
 }
 
-.schedule-table tr:last-child td {
-  border-bottom: none;
-}
-
-.schedule-table tbody tr:hover {
-  background: #f9fafb;
+.schedule-table tr:hover {
+  background: var(--bg-hover);
 }
