@@ -1,26 +1,31 @@
 import { useState } from "react";
 import "./Dashboard.css";
-// import { useAuth } from "../Context/AuthContext";
 import { CLASSES, STUDENTS_BY_CLASS } from "../../data";
 
 const sub = ["Data Structures", "Operating Systems", "DBMS"];
 const rout = ["Room 101", "Room 102", "Room 103"];
 
+const subjectMap = {
+  "Data Structures":   "ds",
+  "Operating Systems": "os",
+  "DBMS":              "dbms",
+};
+
 const Dashboard = () => {
   const [selectedclass, setselectedclass] = useState("");
-  const [selectedsub, setselectedsub] = useState("");
-  const [selectedrout, setselectedrout] = useState("");
+  const [selectedsub,   setselectedsub]   = useState("");
+  const [selectedrout,  setselectedrout]  = useState("");
 
-  const [showpopups, setshowpopup] = useState(false);
-  const [devices, setDevices] = useState([]);
-  const [manualMode, setManualMode] = useState(false);
+  const [showpopups,       setshowpopup]       = useState(false);
+  const [devices,          setDevices]          = useState([]);
+  const [manualMode,       setManualMode]       = useState(false);
   const [attendanceLocked, setAttendanceLocked] = useState(false);
 
-  // 🔥 STATS
-  const total = devices.length;
-  const present = attendanceLocked ? devices.filter(d => d.status === "present").length : 0;
-  const absent = attendanceLocked ? devices.filter(d => d.status === "absent").length : 0;
-  const avg = attendanceLocked && total > 0 ? Math.round((present / total) * 100) : 0;
+  // ✅ Always compute from status — no attendanceLocked gate
+  const total   = devices.length;
+  const present = devices.filter(d => d.status === "present").length;
+  const absent  = devices.filter(d => d.status === "absent").length;
+  const avg     = total > 0 ? Math.round((present / total) * 100) : 0;
 
   function closepopup() {
     setshowpopup(false);
@@ -32,45 +37,37 @@ const Dashboard = () => {
       return;
     }
 
-    const list = STUDENTS_BY_CLASS[selectedclass] || [];
+    const subjectId = subjectMap[selectedsub];
+    const list = STUDENTS_BY_CLASS[selectedclass]?.[subjectId] || [];
 
     const devs = list.map((s) => ({
       ...s,
       connected: false,
-      connectedSec: s.connectedSec,
-      totalClassSec: s.totalClassSec,
-      status: ""
+      status: "",
     }));
 
     setDevices(devs);
     setshowpopup(true);
+    setManualMode(false);
     setAttendanceLocked(false);
   }
 
   function markManual(id, status) {
     setDevices(prev =>
-      prev.map(d =>
-        d.id === id ? { ...d, status } : d
-      )
+      prev.map(d => d.id === id ? { ...d, status } : d)
     );
   }
 
   function takeAttendance() {
     if (attendanceLocked) return;
-
     setDevices(prev =>
       prev.map(d => {
         const percent = d.totalClassSec > 0
           ? (d.connectedSec / d.totalClassSec) * 100
           : 0;
-
-        return {
-          ...d,
-          status: percent >= 75 ? "present" : "absent"
-        };
+        return { ...d, status: percent >= 75 ? "present" : "absent" };
       })
     );
-
     setAttendanceLocked(true);
   }
 
@@ -82,9 +79,7 @@ const Dashboard = () => {
         <select value={selectedclass} onChange={(e) => setselectedclass(e.target.value)}>
           <option value="">Select Class</option>
           {CLASSES.map(item => (
-            <option key={item.id} value={item.id}>
-              {item.label}
-            </option>
+            <option key={item.id} value={item.id}>{item.label}</option>
           ))}
         </select>
 
@@ -96,7 +91,7 @@ const Dashboard = () => {
         </select>
 
         <select value={selectedrout} onChange={(e) => setselectedrout(e.target.value)}>
-          <option value="">Choose Class</option>
+          <option value="">Choose Room</option>
           {rout.map(item => (
             <option key={item}>{item}</option>
           ))}
@@ -113,40 +108,23 @@ const Dashboard = () => {
               <h2>{selectedsub}</h2>
             </div>
 
-            {/* 🔥 BUTTON ROW */}
-<div className="btn-row">
-  <button onClick={() => setManualMode(!manualMode)}>Manual</button>
+            <div className="btn-row">
+              <button onClick={() => setManualMode(!manualMode)}>Manual</button>
+              <button onClick={takeAttendance} disabled={attendanceLocked}>
+                {attendanceLocked ? "Attendance Final ✓" : "Take Attendance"}
+              </button>
+              <button onClick={closepopup} className="close-btn">Close</button>
+            </div>
 
-  <button onClick={takeAttendance} disabled={attendanceLocked}>
-    {attendanceLocked ? "Attendance Final ✓" : "Take Attendance"}
-  </button>
- <button onClick={closepopup} className="close-btn">
-    Close
-  </button>
-</div>
-
-{/* 🔥 STATS CARDS */}
-<div className="stats-cards">
-  <div className="card present">
-    <p>Present</p>
-    <h3>{present}</h3>
-  </div>
-
-  <div className="card absent">
-    <p>Absent</p>
-    <h3>{absent}</h3>
-  </div>
-
-  <div className="card avg">
-    <p>Average</p>
-    <h3>{avg}%</h3>
-  </div>
-</div>
+            <div className="stats-cards">
+              <div className="card present"><p>Present</p><h3>{present}</h3></div>
+              <div className="card absent"><p>Absent</p><h3>{absent}</h3></div>
+              <div className="card avg"><p>Average</p><h3>{avg}%</h3></div>
+            </div>
 
             <div className="table-card">
               <div className="table-wrap">
                 <table>
-
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -159,54 +137,45 @@ const Dashboard = () => {
                       {manualMode && <th>Action</th>}
                     </tr>
                   </thead>
-
                   <tbody>
                     {devices.map(d => {
                       const percent = d.totalClassSec > 0
                         ? (d.connectedSec / d.totalClassSec) * 100
                         : 0;
+                      const overall = d.totalClasses > 0
+                        ? Math.round((d.attended / d.totalClasses) * 100)
+                        : 0;
 
                       return (
                         <tr key={d.id}>
-                          <td>
-                            <span className="bold">{d.name}</span>
-                          </td>
-
+                          <td><span className="bold">{d.name}</span></td>
                           <td>{d.roll}</td>
                           <td>{d.mac}</td>
-
                           <td>
                             {Math.floor(d.connectedSec / 60)}:
                             {String(d.connectedSec % 60).padStart(2, "0")}
                           </td>
-
                           <td>{Math.round(percent)}%</td>
-
                           <td>
-                            <span className="badge ok">83%</span>
+                            <span className="badge ok">{overall}%</span>
                           </td>
-
                           <td>
                             <span className={`badge status-${d.status}`}>
                               {d.status || "-"}
                             </span>
                           </td>
-
-                          <td>
-                           {manualMode && (
-  <td>
-    <div>
-      <button onClick={() => markManual(d.id, "present")}>P</button>
-      <button onClick={() => markManual(d.id, "absent")}>A</button>
-    </div>
-  </td>
-)}
-                          </td>
+                          {manualMode && (
+                            <td>
+                              <div>
+                                <button onClick={() => markManual(d.id, "present")}>P</button>
+                                <button onClick={() => markManual(d.id, "absent")}>A</button>
+                              </div>
+                            </td>
+                          )}
                         </tr>
                       );
                     })}
                   </tbody>
-
                 </table>
               </div>
             </div>

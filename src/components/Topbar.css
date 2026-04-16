@@ -60,14 +60,15 @@
 }
 
 /* OPTIONAL: IMAGE avatar */
-.icon img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-}
+
 .topbar {
   background: var(--bg);
   color: var(--text);
   border-bottom: 1px solid var(--border);
+}
+.nav-icon2 {
+  width: 17px;
+  height: 17px;           /* ⭐ important (same height) */
+  object-fit: contain;
+  display: block;         /* ⭐ removes extra inline space */
 }

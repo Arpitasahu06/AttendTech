@@ -69,7 +69,10 @@
 
 // // export default Topbar;
 import './Topbar.css';
+import {Link} from 'react-router-dom';
 import { useState, useEffect } from "react";
+import image from '../assets/profile-picture.png';
+import image2 from '../assets/logout.png';
 
 function Clock() {
   const [time, setTime] = useState(new Date());
@@ -100,7 +103,11 @@ const Topbar = ({ toggleTheme, theme }) => {
       <div className="mode" onClick={toggleTheme}>
         {theme === 'light' ? '🌙' : '☀️'}
       </div>
-      <div className="icon">B</div>
+     <Link to="/profile" className="nav-link"> 
+    <img src={image} alt="Profile"  className='nav-icon'/>
+     </Link>
+      <img src={image2} alt="Profile"  className='nav-icon2'/>
+   
     </div>
   );
 };

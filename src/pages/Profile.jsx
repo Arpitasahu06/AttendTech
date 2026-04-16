@@ -12,7 +12,7 @@ const Profile = () => {
 
       <div className='profile'>
         <div>
-          <h1>Hello John Doe 👋</h1>
+          <h1>Hello Amrita Kumari 👋</h1>
           <h2>Associate Professor · Computer Science & Engineering</h2>
          
           <p>Here is your teaching overview</p>
@@ -28,7 +28,7 @@ const Profile = () => {
 
         <div className='block'>
           <h4>Email</h4>
-          <p>john.doe@gmail.com</p>
+          <p>amit.kumar@university.ac.in</p>
         </div>
 
         <div className='block'>
@@ -65,20 +65,26 @@ const Profile = () => {
 
           <div className='row'>
             <span className='subject'>DBMS</span>
-            <span className='class'>CSE-A</span>
+            <span className='class'>CSE-4A</span>
           </div>
 
           <div className='row'>
             <span className='subject'>Operating Systems</span>
-            <span className='class'>CSE-B</span>
+            <span className='class'>CSE-3B</span>
           </div>
 
           <div className='row'>
             <span className='subject'>Data Structures</span>
-            <span className='class'>CSE-C</span>
+            <div>
+            <span className='class'>CSE-5A</span>
+             <span className='class'>CSE-5A</span>
+             </div>
           </div>
 
         </div>
+      </div>
+      <div className='logout'>
+        <button className='logout-btn'>Logout</button>
       </div>
     </div>
   );

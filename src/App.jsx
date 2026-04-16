@@ -38,6 +38,7 @@ import Report from './pages/Report.jsx';
 import Profile from './pages/Profile.jsx';
 import Topbar from './components/Topbar.jsx';
 import './App.css';
+// import Login from './components/Login.jsx';
 import { useTheme } from "./Context/ThemeContext";
 
 const App = () => {
@@ -46,10 +47,12 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className={theme === "dark" ? "app dark" : "app"}>
+       {/* <div><Route path='/' element={<Login/>} /></div>  */}
         <Sidebar />
         <div className='main'>
           <Topbar toggleTheme={toggleTheme} theme={theme} />
           <Routes>
+            
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/myschedule' element={<Myschedule />} />
             <Route path='/report' element={<Report />} />
