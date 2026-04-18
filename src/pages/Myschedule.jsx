@@ -34,7 +34,7 @@ return ( <div className="schedule-page">
 
   <h2>Today : {todayname}</h2>
 
-  {/* 🔥 STATS */}
+  {/*  STATS */}
   <div className="stats-row">
     <div className="stat-box">
       <h3>{SCHEDULE.length}</h3>

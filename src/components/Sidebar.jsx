@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
-import userImage from '../assets/signal.png'; // Importing the image
+import userImage from '../assets/signal.png'; 
 import dashboard from '../assets/profile.png';
 import report from '../assets/report.png';
 import schedule from '../assets/schd.png';

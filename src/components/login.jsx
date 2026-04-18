@@ -7,24 +7,22 @@ const TeacherLogin = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  // ✅ Define valid credentials
+  
   const validUsername = "amrita";
   const validPassword = "12345";
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Empty check
+    
     if (!username || !password) {
       alert("Please fill all fields");
       return;
     }
 
-    // ✅ Validation logic
     if (username === validUsername && password === validPassword) {
-     // alert("Login Successful ✅");
+     
 
-      // 🔥 Redirect to dashboard
       navigate("/dashboard");
     } else {
       alert("Invalid Username or Password ");

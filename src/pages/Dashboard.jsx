@@ -21,7 +21,7 @@ const Dashboard = () => {
   const [manualMode,       setManualMode]       = useState(false);
   const [attendanceLocked, setAttendanceLocked] = useState(false);
 
-  // ✅ Always compute from status — no attendanceLocked gate
+  
   const total   = devices.length;
   const present = devices.filter(d => d.status === "present").length;
   const absent  = devices.filter(d => d.status === "absent").length;

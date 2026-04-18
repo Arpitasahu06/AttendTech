@@ -1,9 +1,3 @@
-/* ════════════════════════════════════════
-   Reports.css  —  SmartAttend
-   All colors via CSS variables
-   Dark mode → .dark on parent (index.css)
-   ════════════════════════════════════════ */
-
 .reports-page {
   padding: 24px 32px;
   background: var(--bg);
