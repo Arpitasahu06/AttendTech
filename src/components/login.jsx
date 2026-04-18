@@ -57,9 +57,7 @@ const TeacherLogin = () => {
             />
           </div>
 
-         {/* <div className="forgot">
-            <span>Forgot Password?</span>
-          </div>  */}
+         
 
           <button type="submit" className="login-btn">
             Login

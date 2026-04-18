@@ -21,7 +21,7 @@ export const SUBJECTS = [
   { id: 'dbms', label: 'Database Management' },
 ];
 
-// ── Base students per class — we spread these and vary attended/connectedSec per subject ──
+
 
 const cse3a_base = [
   { id:1,  name:'Rahul Sharma',   roll:'CSE3A001', mac:'A1'  },
@@ -95,7 +95,7 @@ const cse5a_base = [
   { id:60, name:'Isha Tiwari',    roll:'CSE5A015', mac:'D15' },
 ];
 
-// ── Helper: merge base student with per-subject stats ──
+
 function withStats(base, statsArray) {
   return base.map((s, i) => ({
     ...s,

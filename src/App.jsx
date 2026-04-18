@@ -16,10 +16,10 @@ const App = () => {
     <BrowserRouter>
       <Routes>
 
-        {/* ✅ Login route (NO sidebar/topbar) */}
+        
         <Route path="/" element={<TeacherLogin />} />
 
-        {/* ✅ Main app layout */}
+      
         <Route path="/*" element={
           <div className={theme === "dark" ? "app dark" : "app"}>
             <Sidebar />
