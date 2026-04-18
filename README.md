@@ -1,21 +1,58 @@
-<<<<<<< HEAD
-# React + Vite
+🚀 Overview: 
+ In traditional classrooms, 5–10 minutes are often spent taking attendance, reducing valuable teaching time—especially in large batches. This system addresses that inefficiency by automating attendance marking without teacher involvement.
+It is specifically built for high-density digital learning environments such as coding bootcamps, training institutes, and tech labs where students actively use personal devices connected to a shared WiFi network.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+⚙️ How It Works: 
+ Each student registers a device (via MAC address) in the system
+When the student connects to the classroom WiFi, the system:
+Tracks connection duration
+Monitors activity status
+If the student remains connected for ≥ 75% of the session, attendance is automatically marked
 
-Currently, two official plugins are available:
+🔐 Anti-Proxy Mechanisms: 
+ To prevent misuse and proxy attendance, the system integrates multiple validation layers:
+Device Binding – Only registered devices are allowed
+Idle Detection – Auto-disconnect on inactivity (e.g., 10 minutes)
+Re-authentication – Uses browser-based authentication (Web Authentication API) such as:
+Fingerprint verification
+Face recognition
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+📊 Key Features: 
+ ✅ Fully automated attendance (no manual input required)
+✅ Real-time connection tracking
+✅ Attendance based on actual participation duration
+✅ Proxy attendance reduction
+✅ Teacher-independent system
 
-## React Compiler
+📈 Advanced Analytics (For Training Institutes): 
+ Active session/coding time tracking
+Student engagement monitoring
+Connection duration analytics
+Batch-level performance dashboard
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🎯 Ideal Use Cases: 
+ This system is best suited for:
+Coding bootcamps
+Data science / tech training institutes
+Computer labs and digital classrooms
+Corporate training environments
+⚠️ Not recommended for traditional classrooms where device usage is inconsistent.
 
-## Expanding the ESLint configuration
+💡 Benefits: 
+ ⏱️ Saves classroom time
+👨‍🏫 Improves teaching efficiency
+🔒 Reduces proxy attendance
+📊 Provides actionable student insights
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# AttendTech
-Intelligent WiFi-based attendance system that automates student attendance using device connectivity and session tracking. Features MAC-based device binding, inactivity detection, and secure authentication to prevent proxy, along with real-time analytics for engagement.
->>>>>>> 561ef0843bbb2515d76b9df37cdd4eb8a4cc1e9a
+🛠️ Tech Stack (example — update as per your project): 
+ Frontend: React.js
+Backend: Node.js / Express
+Database: MongoDB
+Networking: WiFi-based device tracking
+Authentication: Web Authentication API
+
+📌 Future Enhancements: 
+ AI-based engagement analysis
+Mobile app integration
+Real-time alerts for low participation
+Integration with LMS platforms
