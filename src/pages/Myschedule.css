@@ -1,0 +1,110 @@
+
+
+.schedule-page {
+  padding: 28px 32px;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* HEADER */
+.schedule-page h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+/* STATS */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.stat-box h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.stat-box p {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* TODAY CARD */
+.today-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid #059669;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+}
+
+.today-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.today-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* EMPTY */
+.no-class-box {
+  background: var(--bg-hover);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+/* SELECT */
+select {
+  margin: 16px 0;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-subtle);
+  color: var(--text);
+}
+
+/* TABLE */
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.schedule-table th {
+  background: var(--bg-subtle);
+  padding: 12px;
+  font-size: 12px;
+  text-align: left;
+  color: var(--text-secondary);
+}
+
+.schedule-table td {
+  padding: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+}
+
+.schedule-table tr:hover {
+  background: var(--bg-hover);
+}

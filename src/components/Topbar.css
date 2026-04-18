@@ -1,0 +1,74 @@
+/* TOPBAR CONTAINER */
+.topbar {
+  height: 60px;
+  width: 100%;
+  
+  border-bottom: 0.5px solid #d3d1c7;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+
+  padding: 0 20px;
+}
+
+/* CLOCK */
+.clock {
+  font-size: 14px;
+  color: #2c2c2a;
+  font-weight: 500;
+  margin-right: auto;  /* left side push */
+}
+
+/* THEME BUTTON */
+.mode {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #f1efe8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.mode:hover {
+  background: #e4e2da;
+  transform: scale(1.05);
+}
+
+/* USER ICON / AVATAR */
+.icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #1D9E75;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* OPTIONAL: IMAGE avatar */
+
+.topbar {
+  background: var(--bg);
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+.nav-icon2 {
+  width: 21px;
+  height: 21px;           /* ⭐ important (same height) */
+  object-fit: contain;
+  display: block;         /* ⭐ removes extra inline space */
+}
