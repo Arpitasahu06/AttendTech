@@ -18,11 +18,11 @@ Fingerprint verification
 Face recognition
 
 📊 Key Features: 
- ✅ Fully automated attendance (no manual input required)
-✅ Real-time connection tracking
-✅ Attendance based on actual participation duration
-✅ Proxy attendance reduction
-✅ Teacher-independent system
+ Fully automated attendance (no manual input required)
+Real-time connection tracking
+Attendance based on actual participation duration
+Proxy attendance reduction
+ Teacher-independent system
 
 📈 Advanced Analytics (For Training Institutes): 
  Active session/coding time tracking
@@ -36,13 +36,13 @@ Coding bootcamps
 Data science / tech training institutes
 Computer labs and digital classrooms
 Corporate training environments
-⚠️ Not recommended for traditional classrooms where device usage is inconsistent.
+Not recommended for traditional classrooms where device usage is inconsistent.
 
 💡 Benefits: 
- ⏱️ Saves classroom time
-👨‍🏫 Improves teaching efficiency
-🔒 Reduces proxy attendance
-📊 Provides actionable student insights
+  Saves classroom time
+ Improves teaching efficiency
+ Reduces proxy attendance
+ Provides actionable student insights
 
 🛠️ Tech Stack (example — update as per your project): 
  Frontend: React.js
